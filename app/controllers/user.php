@@ -15,7 +15,7 @@ class User extends Controller {
     }
     
     public function page() {
-        $this->view('home/userPage', []);
+        $this->view('user/userPage', []);
     }
     
     public function editForm() {
@@ -29,12 +29,12 @@ class User extends Controller {
         switch($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($id) ) {
             case empty($firstName ) && empty($lastName) && empty($email) && empty($pass) :
                 $message = $this->session->setErrorMessage('Bи не змогли редагувати дані свого акаунту, вам потрібно внести хоча б одну зміну для редагування');
-                $this->view('home/userPage', ['session' => $message]);
+                $this->view('user/userPage', ['session' => $message]);
                 break;
             default : 
             $this->model->updateDataUser($firstName, $lastName, $email, $pass, $id);
             $message = $this->session->setSuccessMessage('Вам вдалось редагувати особисті дані');
-            $this->view('home/userPage', ['session' => $message]);
+            $this->view('user/userPage', ['session' => $message]);
         }
     }
 

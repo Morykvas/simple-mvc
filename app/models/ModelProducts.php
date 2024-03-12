@@ -1,26 +1,21 @@
 <?php 
 
+use requestDb\Products\Products;
 
-use Database\Database;
-
-class ModelProducts 
+class ModelProducts
 {
     private $database;
 
-    public function __construct()
-    {
-        $this->database = new Database();
+    public function __construct() {
+        $this->database   = new Products();
     }
 
     public function allProducts() 
     {
-        $request = $this->database->products(); 
-        return $request;
-    }
-
-    public function getProductById($productId) 
-    {
-        $product = $this->database->productId($productId);
-        return $product;
+       $request = $this->database->products();        
+       return $request;
     }
 }
+
+
+

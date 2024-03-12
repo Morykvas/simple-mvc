@@ -1,6 +1,6 @@
 <?php 
 
-use Database\Database;
+use requestDb\CheckUrl\CheckUrl;
 use controllers\ErrorController\ErrorController;
 
 class App {
@@ -40,7 +40,7 @@ class App {
     
     public function checkUrl() 
     {
-        $this->checkUrl = new Database();
+        $this->checkUrl = new CheckUrl();
         $urls = $this->checkUrl->checkUrl();
         return  $urls;
     }

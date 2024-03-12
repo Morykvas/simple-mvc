@@ -1,6 +1,6 @@
 <?php
   define('CSS', '../../');  
-  require_once 'header.php';  
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/simple-mvc/app/views/header.php');
   $session = new ModelSession();
   $methods = get_class_methods($session);
   $userId = null;
@@ -38,4 +38,4 @@
     <h2>Закрита сторінка</h2>
 <?php endif; ?>
 
-<?php require_once 'footer.php'; ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/simple-mvc/app/views/footer.php'); ?>

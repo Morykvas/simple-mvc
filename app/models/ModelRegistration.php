@@ -1,14 +1,12 @@
 <?php 
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
 
-use Database\Database;
+use requestDb\Registration\RegistrationDb;
 
 class ModelRegistration  {
     private $database; 
 
     public function __construct() {
-        $this->database = new Database();
+        $this->database = new RegistrationDb();
     }
 
     public function processFormData($firstName, $lastName, $email, $pass) {
@@ -18,5 +16,4 @@ class ModelRegistration  {
     public function counteEmail($email) {
         return  $this->database->scheckEmail($email);
     }
-
 }

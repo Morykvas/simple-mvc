@@ -18,11 +18,11 @@ class Authorization extends Controller {
 
     public function index() { 
         http_response_code(404);
-        $this->view('home/404', ['message' => 'Такої сторінки не існує', 'title' => '404 Not Found']);
+        $this->view('404', ['message' => 'Такої сторінки не існує', 'title' => '404 Not Found']);
     }
  
     public function page() {
-        $this->view('home/authorization', []);
+        $this->view('authent/authorization', []);
     }
 
     public function processForm() {
@@ -35,14 +35,14 @@ class Authorization extends Controller {
         switch($_SERVER['REQUEST_METHOD'] == 'POST' ) {
             case empty($email) || empty($password) : 
                 $message = $this->session->setErrorMessage('Для авторизації введіть всі днаі!');
-                $this->view('home/authorization', ['session' => $message]);
+                $this->view('authent/authorization', ['session' => $message]);
                     break;
             case isset($email) !== isset($userRow['email'] ) || isset($password) !== isset(  $userRow['pass']) :
                 $message = $this->session->setErrorMessage('Пароль або емейл не вірний, спробуйте ще раз!');
-                $this->view('home/authorization', ['session' => $message]);
+                $this->view('authent/authorization', ['session' => $message]);
                     break;
             default : 
-            $this->view('home/userPage', ['data' => $this->session->setUserData($userRow)]); 
+            $this->view('user/userPage', ['data' => $this->session->setUserData($userRow)]); 
             $this->setUrl->setUrl('user/page');
         }
     }

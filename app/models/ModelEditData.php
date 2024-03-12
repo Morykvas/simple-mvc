@@ -1,6 +1,6 @@
 <?php 
 
-use Database\Database;
+use requestDb\EditDataUser\UserEditData;
 
 class ModelEditData 
 {
@@ -8,7 +8,7 @@ class ModelEditData
 
     public function __construct()
     {
-        $this->database = new Database;
+        $this->database = new  UserEditData();
     }
     public function updateDataUser( $firstName, $lastName, $email, $pass, $id ) {
         return $this->database->userEditData($firstName, $lastName, $email, $pass, $id);

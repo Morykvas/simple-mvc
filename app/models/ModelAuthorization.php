@@ -1,12 +1,12 @@
 <?php 
 
-use Database\Database;
+use requestDb\Authorization\AuthorizationDb;
 
 class ModelAuthorization  {
     private $database; 
 
     public function __construct() {
-        $this->database = new Database();
+        $this->database = new AuthorizationDb();
     }
 
     public function dataAuthorization($email, $pass) {

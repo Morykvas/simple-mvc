@@ -73,7 +73,7 @@ form input[type=submit] {
     flex-direction: column;
     border: 2px solid black;
     max-width: 200px;
-    min-height: 100px;
+    min-height: 118px;
     height: 100%;
     width: 100%;
     margin-right:20px;
@@ -87,4 +87,7 @@ form input[type=submit] {
 }
 .desc-products {
     width: 178px;
+}
+.category_title {
+    text-transform:capitalize;
 }

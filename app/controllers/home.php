@@ -5,7 +5,7 @@ class Home extends Controller
 {
     public function index() 
     {
-        $this->view('home/index', ['title' => 'Головна сторінка']);
+        $this->view('index', ['title' => 'Головна сторінка']);
     } 
 }
 

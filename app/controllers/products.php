@@ -1,30 +1,32 @@
 <?php 
 
-use Database\Database;
+// use Database\Database;
+// use requestDb\Database\Database;
+
 use controllers\ErrorController\ErrorController;
-require_once 'home.php';
+// require_once 'home.php';
 
 class Products extends Controller  {
     private $errorController;
     private $productModel;
-    private $database;
     private $error;
     private $check;
     private $category;
+    private $productsId;
 
  
     public function __construct()
     {
-        $this->database = new Database();
         $this->productModel = $this->model('ModelProducts');
         $this->category = $this->model('ModelCategory');
+        $this->productsId = $this->model('ModelProductsId');
         $this->errorController = new ErrorController();
     }
     
     public function id($id = null) 
     {
              
-        $product = $this->productModel->getProductById($id);
+        $product = $this->productsId->getProductById($id);
         $productData = array();
         foreach ($product as $kay) {
             foreach ($kay as $kays => $values) {
@@ -38,7 +40,7 @@ class Products extends Controller  {
             return; 
         }
 
-        $this->view('home/product', ['name' => $productData,  'title' => 'Product by Id']);
+        $this->view('products/product', ['name' => $productData,  'title' => 'Product by Id']);
     
     }
 
@@ -52,7 +54,7 @@ class Products extends Controller  {
             $allProductData[] = $productData;
         }
 
-        $this->view('home/products', ['name' => $allProductData, 'title' => 'Products All']);
+        $this->view('products/products', ['name' => $allProductData, 'title' => 'Products All']);
     }    
     
     public function index() 
@@ -69,7 +71,11 @@ class Products extends Controller  {
                 return; 
             }
             $categories = $this->category->productCategory($category);
-            $this->view('home/category', ['products' => $categories, 'title' => $category]);
+            foreach($categories as $category) {
+               $categoryName = $category['category_name'];
+            }
+            
+            $this->view('products/category', ['products' => $categories, 'title' => $categoryName]);
            
 
         } catch(PDOException $e) {

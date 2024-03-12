@@ -1,7 +1,7 @@
 
 <?php 
 define('CSS', '../../');
-require_once 'header.php'; 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/simple-mvc/app/views/header.php');
 ?>
 
 <div class="container">
@@ -18,4 +18,4 @@ require_once 'header.php';
       </div>
    </div>
 </div>
-<?php require_once 'footer.php'; ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/simple-mvc/app/views/footer.php'); ?>
